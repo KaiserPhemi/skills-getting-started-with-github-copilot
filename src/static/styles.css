@@ -63,6 +63,7 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .activity-card h4 {
@@ -72,6 +73,66 @@ section h3 {
 
 .activity-card p {
   margin-bottom: 8px;
+}
+
+/* Participants section inside activity cards */
+.participants {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #eee;
+}
+
+.participants h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #1a237e;
+  font-weight: 600;
+}
+
+.participants-list {
+  /* hide bullet points and rely on spacing for layout */
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.participants-list li {
+  padding: 6px 8px;
+  border-bottom: 1px solid #fbfbfb;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.participant-email {
+  word-break: break-all;
+}
+
+.delete-participant {
+  background: transparent;
+  border: none;
+  color: #c62828;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.delete-participant:hover {
+  background-color: rgba(198,40,40,0.08);
+}
+
+/* Small visual hint when there are no participants */
+.participant-empty {
+  margin: 8px 0 0 0;
+  font-style: italic;
+  color: #666;
+  font-size: 14px;
 }
 
 .form-group {
