@@ -20,12 +20,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        // Build main card markup (static parts)
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+
+          <!-- Participants section (will be populated below) -->
+          <div class="participants">
+            <h5>Participants (${details.participants.length})</h5>
+            <ul class="participants-list"></ul>
+            <p class="participant-empty hidden">No participants yet</p>
+          </div>
         `;
+
+        // Populate participants list safely using DOM methods
+        const participantsList = activityCard.querySelector(".participants-list");
+        const emptyNotice = activityCard.querySelector(".participant-empty");
+
+        if (Array.isArray(details.participants) && details.participants.length > 0) {
+          details.participants.forEach((p) => {
+            const li = document.createElement("li");
+            li.textContent = p;
+            participantsList.appendChild(li);
+          });
+          emptyNotice.classList.add("hidden");
+        } else {
+          // Show "No participants yet"
+          emptyNotice.classList.remove("hidden");
+        }
 
         activitiesList.appendChild(activityCard);
 
